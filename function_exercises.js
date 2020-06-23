@@ -3,17 +3,18 @@
 //    2. For each function use a different way of creating the output sentence. For example only one can use concatanation.
 // 
 // _____________________________________________________________
-// let myNameAge = function(name,age){
-//     console.log("Hello my name is", name, "and I am", age, "years old")
-// }
-// myNameAge("Eric",27)
-// let myName = (name,age) => "Hello my name is " + name + "and I am " + age + "years old."
-// myName("Eric", 27)
-// 
-// function iAm(name,age){
-//     return `Hello my name is ${name} and I am ${age} years old.`
-// }
-// iAm("Eric", 27)
+let myNameAge = function(name,age){
+    console.log("Hello my name is", name, "and I am", age, "years old")
+}
+myNameAge("Eric",27)
+
+let myName = (name,age) => "Hello my name is " + name + "and I am " + age + "years old."
+myName("Eric", 27)
+
+function iAm(name,age){
+    return `Hello my name is ${name} and I am ${age} years old.`
+}
+iAm("Eric", 27)
 // _____________________________________________________________
 
 // 2. Write a function that has another function as a parameter, and inside the main function the parameter function is called after you print to the console "Main Function Executing".
@@ -21,23 +22,23 @@
 //     2. (Challange) have the main function have a second parameter that will be used as an argument for the child function.
 // 
 // _____________________________________________________________
-// let variable = (param1) => {
-//     console.log("Main function is executing")
-// }
-// function mainFunct(callback){
-//     console.log("Main Function Executing")
-//     callback()
-// }
-// mainFunct(variable)
-// ** mainFunct(() =>console.log('I am here'))
+let variable = (param1) => {
+    console.log("Main function is executing")
+}
+function mainFunct(callback){
+    console.log("Main Function Executing")
+    callback()
+}
+mainFunct(variable)
+mainFunct(() =>console.log('I am here'))
 // __________________________________________________________
-// // function mainFunct(callback, secondParam){
-//     console.log("Main Function Executing")
-//     callback(secondParam)
-// }
-// mainFunct(myParam => console.log("My Parent gave me " + myParam), "Something Bad")
-// 
-// mainFunct(variable, "dodo")
+function mainFunct(callback, secondParam){
+    console.log("Main Function Executing")
+    callback(secondParam)
+}
+mainFunct(myParam => console.log("My Parent gave me " + myParam), "Something Bad")
+
+// ** mainFunct(variable, "dodo") ** learn later
 // _____________________________________________________________
 
 // 3. Write a function that will print to the console "Parent Function Called" and then returns a function that when is called will print to the console "Child Function Called" The child function cannot be declared outside of the main function. Follow steps bellow if you need a step by step way to do it.
@@ -48,21 +49,25 @@
 //     5. call that variable.
 // 
 // _____________________________________________________________
-// let parentFunc = function(){
-//     console.log("Parent function")
-//     return ()=>console.log("Child Function")
-// }
-// parentFunc()
-// let parentF = parentFunc()
-// parentF()
+let parentFunc = function(){
+    console.log("Parent Function")
+    return ()=>console.log("Child Function")
+}
+parentFunc()
+
+let parentF = parentFunc()
+parentF()
 // __________________________________________________________
-// let aFunc = () => () =>console.log('This is super strange) *** an example of how this goes beyond the scope but still valid ***
-// 
-// let myObj = {
-//     aFunc: ()=>console.log('A function')
-// }
-// myObj.aFunc()
-// 
-// myObj.bFunc() = () => "Wow String returned"
-// myObj.bFunc()
-// myObj
+let aFunc = () => () =>console.log('This is super strange') // an example of how this goes beyond the scope but still valid
+aFunc()()
+
+let myObj = {
+    aFunc: ()=>console.log('A function')
+}
+myObj.aFunc()
+
+myObj.bFunc() = () => "Wow String returned"
+myObj.bFunc()
+
+myObj
+// {aFunc: f, bFunc: f}
